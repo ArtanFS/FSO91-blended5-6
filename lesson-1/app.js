@@ -83,9 +83,22 @@
 // for (let i = max; i >= min; i -= 1) {
 //     if(i % 2 !== 0) {
 // continue;
-       
+
 //     }
 //     total += i;
 //     console.log('парні: ', i);
 // }
 // console.log(`сума усіх парних:${total}`);
+
+// Написати ф-цію, яка створює масив із зазначеною довжиною та наповнює його переданим значенням
+// приклад: ф-ція fillArray(3, 'a') повинна повертати масив ['a', 'a', 'a']
+
+// function fillArray(number, symbol) {
+//   const newArray = [];
+//   for (let i = 0; i < number; i += 1) {
+//     newArray.push(symbol);
+//   }
+//   return newArray;
+// }
+// fillArray(3, "a");
+// console.log(fillArray(10, "g"));
