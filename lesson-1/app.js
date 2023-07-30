@@ -102,3 +102,38 @@
 // }
 // fillArray(3, "a");
 // console.log(fillArray(10, "g"));
+//TODO: 11 ===================================
+
+
+// Написати ф-цію, яка прибиратиме з масиву всі значення, які перетворюються на false
+// undefined, null, false, '', 0, NaN
+const array = [
+  1,
+  0,
+  54,
+  'doc',
+  null,
+  'jpg',
+  undefined,
+  '',
+  'png',
+  'exe',
+  false,
+  'mp4',
+  NaN,
+  'hbs',
+];
+
+function clearArray (arr){
+    const newClear = []
+
+    for (const value of arr) {
+        if (value) {
+            newClear.push(value)
+        }
+    }
+    return newClear;
+
+
+}
+console.log(clearArray(array));
