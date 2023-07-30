@@ -104,36 +104,55 @@
 // console.log(fillArray(10, "g"));
 //TODO: 11 ===================================
 
-
 // Написати ф-цію, яка прибиратиме з масиву всі значення, які перетворюються на false
 // undefined, null, false, '', 0, NaN
-const array = [
-  1,
-  0,
-  54,
-  'doc',
-  null,
-  'jpg',
-  undefined,
-  '',
-  'png',
-  'exe',
-  false,
-  'mp4',
-  NaN,
-  'hbs',
-];
+// const array = [
+//   1,
+//   0,
+//   54,
+//   'doc',
+//   null,
+//   'jpg',
+//   undefined,
+//   '',
+//   'png',
+//   'exe',
+//   false,
+//   'mp4',
+//   NaN,
+//   'hbs',
+// ];
 
-function clearArray (arr){
-    const newClear = []
+// function clearArray (arr){
+//     const newClear = []
 
-    for (const value of arr) {
-        if (value) {
-            newClear.push(value)
-        }
-    }
-    return newClear;
+//     for (const value of arr) {
+//         if (value) {
+//             newClear.push(value)
+//         }
+//     }
+//     return newClear;
 
+// }
+// console.log(clearArray(array));
 
-}
-console.log(clearArray(array));
+//Напиши функцію findSmallerNumber(numbers)
+//яка шукає найменше число в масиві.
+//Додай перевірку що функція отримує масив
+
+// const numbers = [2, 5, 35, 56, 1, 24, 7, 0, 3];
+
+// function findSmallerNumber(array) {
+//   if (!Array.isArray(array)) {
+//     return "no array";
+//   }
+//   let min = array[0];
+//   for (const number of array) {
+//     if (min > number) {
+//       min = number;
+//     }
+//   }
+
+//   return min;
+// }
+// console.log(findSmallerNumber(0));
