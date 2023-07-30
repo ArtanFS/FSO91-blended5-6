@@ -72,3 +72,20 @@
 // const minutes = String(globalMinutes % 60).padStart(2, 0);
 
 // console.log(`${hours}:${minutes}`);
+
+//Напишіть цикл, який виводить у консоль
+// числа від max до min за спаданням
+// Додайте усі парні числа від min до max
+
+//const min = 1;
+// const max = 90;
+// let total = 0
+// for (let i = max; i >= min; i -= 1) {
+//     if(i % 2 !== 0) {
+// continue;
+       
+//     }
+//     total += i;
+//     console.log('парні: ', i);
+// }
+// console.log(`сума усіх парних:${total}`);
