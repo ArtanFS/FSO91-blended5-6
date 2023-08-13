@@ -173,3 +173,193 @@ user.premium = false;
 // }
 
 // console.log(findElement(numbers, isEven));
+
+// Array methodes
+
+//TODO:=========task-01=================
+// Дано масив чисел [1, 2, 3, 4, 5]. Створіть новий масив, що містить квадрати кожного елементу вхідного масиву. Очікуваний результат: [1, 4, 9, 16, 25].
+
+// const array = [1, 2, 3, 4, 5];
+// const res = array.map((number) => Math.pow(number, 2));
+// console.log(res);
+
+//TODO:=========task-02=================
+// Дано масив об'єктів {id: 1, values: [1, 2, 3]}, {id: 2, values: [4, 5, 6]}, {id: 3, values: [7, 8, 9]}. Створіть новий масив, що містить всі значення з масивів values кожного об'єкту, збережених в одному масиві. Очікуваний результат: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+// const data = [
+//   { id: 1, values: [1, 2, 3] },
+//   { id: 2, values: [4, 5, 6] },
+//   { id: 3, values: [7, 8, 9] },
+// ];
+
+// const res = data.flatMap(({ values }) => values);
+// console.log(res);
+
+//TODO:=========task-03=================
+// Дано масив об'єктів {name: "John", age: 27}, {name: "Jane", age: 31}, {name: "Bob", age: 19}. Перевірте, чи є хоча б один об'єкт з віком менше 20 років. Очікуваний результат: true.
+
+// const people = [
+//   { name: "John", age: 27 },
+//   { name: "Jane", age: 31 },
+//   { name: "Bob", age: 19 },
+// ];
+
+// const res = people.some(({ age }) => age < 20);
+// console.log(res);
+
+//TODO:=========task-04=================
+//  Дано масив чисел [2, 4, 6, 8, 10]. Перевірте, чи є кожен елемент масиву парним. Очікуваний результат: true.
+
+// const numbers = [2, 4, 6, 8, 10];
+
+// const res = numbers.every((number) => number % 2 === 0);
+// console.log(res);
+
+//TODO:=========task-05=================
+// Знайдіть перше непарне число
+
+// const numbers = [2, 1, 6, 8, 9, 10, 12];
+
+// const res = numbers.find((number) => number % 2 !== 0);
+// console.log(res);
+
+//TODO:=========task-06=================
+// Відсортуйте масив чисел [4, 2, 5, 1, 3] у порядку зростання. Очікуваний результат: [1, 2, 3, 4, 5].
+
+// const numbers = [4, 2, 5, 1, 3];
+// const res = [...numbers].sort((a, b) => a - b);
+// console.log(res);
+// console.log(numbers);
+
+//TODO:===============task-07===============================
+// Відсортуйте масив рядків ["banana", "orange", "apple", "pear"] у порядку алфавіту. Очікуваний результат: ["apple", "banana", "orange", "pear"].
+
+// const array = ["banana", "orange", "apple", "pear"];
+// const res = [...array].sort((a, b) => a.localeCompare(b));
+// console.log(res);
+
+//TODO:===============task-07===============================
+// Відсортуйте масив рядків ["banana", "orange", "apple", "pear"] у порядку алфавіту. Очікуваний результат: ["apple", "banana", "orange", "pear"].
+
+//TODO:=========task-08=================
+// Дано масив об'єктів {name: "John", age: 27}, {name: "Jane", age: 31}, {name: "Bob", age: 19}. Створіть новий масив, що містить тільки об'єкти, в яких вік більше 20 років. Очікуваний результат: [{name: "John", age: 27}, {name: "Jane", age: 31}]
+
+// const user1 = [
+//   { name: "John", age: 27 },
+//   { name: "Jane", age: 31 },
+//   { name: "Bob", age: 19 },
+// ];
+
+// const res = user1.filter(({ age }) => age > 20);
+// console.log(res);
+
+//TODO:=========task-11=================
+// Дано масив чисел [1, 2, 3, 4, 5]. Застосуйте метод reduce для обчислення суми елементів масиву
+
+// const array = [1, 2, 3, 4, 5];
+// const res = array.reduce((acc, number) => acc + number, 0);
+// console.log(res);
+
+//TODO:===============task-12===============================
+/// Даний словник із міст та дат виступів рок-групи
+
+/// Необхідно перетворити словник (key-value) на масив із назв міст
+/// Виведення міст має бути у хронологічному порядку
+/// Міста у яких концерт вже пройшов потрібно виключити
+/// Результат ["Умань", "Харків", "Одеса"]
+
+// const concerts = {
+//   Київ: new Date("2020-04-01"),
+//   Умань: new Date("2023-09-02"),
+//   Вінниця: new Date("2020-04-21"),
+//   Одеса: new Date("2023-09-15"),
+//   Хмельницький: new Date("2020-04-18"),
+//   Харків: new Date("2023-09-10"),
+// };
+
+// function concertsToArray(obj) {
+//   return Object.keys(obj)
+//     .filter((city) => obj[city] > new Date())
+//     .sort((a, b) => obj[a] - obj[b]);
+// }
+// console.log(concertsToArray(concerts));
+const users = [
+  {
+    id: "701b29c3-b35d-4cf1-a5f6-8b12b29a5081",
+    name: "Moore Hensley",
+    email: "moorehensley@indexia.com",
+    eyeColor: "blue",
+    friends: ["Sharron Pace"],
+    isActive: false,
+    balance: 2811,
+    skills: ["ipsum", "lorem"],
+    gender: "male",
+    age: 37,
+  },
+  {
+    id: "7a3cbd18-57a1-4534-8e12-1caad921bda1",
+    name: "Sharlene Bush",
+    email: "sharlenebush@tubesys.com",
+    eyeColor: "blue",
+    friends: ["Briana Decker", "Sharron Pace"],
+    isActive: true,
+    balance: 3821,
+    skills: ["tempor", "mollit", "commodo", "veniam", "laborum"],
+    gender: "female",
+    age: 34,
+  },
+  {
+    id: "334f8cb3-eb04-45e6-abf4-4935dd439b70",
+    name: "Carey Barr",
+    email: "careybarr@nurali.com",
+    eyeColor: "blue",
+    friends: ["Jordan Sampson", "Eddie Strong"],
+    isActive: true,
+    balance: 3951,
+    skills: ["ex", "culpa", "nostrud"],
+    gender: "male",
+    age: 27,
+  },
+  {
+    id: "150b00fb-dd82-427d-9faf-2879ea87c695",
+    name: "Blackburn Dotson",
+    email: "blackburndotson@furnigeer.com",
+    eyeColor: "brown",
+    friends: ["Jacklyn Lucas", "Linda Chapman"],
+    isActive: false,
+    balance: 1498,
+    skills: ["non", "amet", "ipsum"],
+    gender: "male",
+    age: 38,
+  },
+  {
+    id: "e1bf46ab-7168-491e-925e-f01e21394812",
+    name: "Sheree Anthony",
+    email: "shereeanthony@kog.com",
+    eyeColor: "brown",
+    friends: ["Goldie Gentry", "Briana Decker"],
+    isActive: true,
+    balance: 2764,
+    skills: ["lorem", "veniam", "culpa"],
+    gender: "female",
+    age: 39,
+  },
+];
+// Отримати масив імен всіх користувачів (поле name).
+//TODO:==========================
+// Отримати масив об'єктів користувачів за кольором очей (eyeColor).
+//TODO:==========================
+// Отримати масив імен користувачів за статтю (поле gender)
+//TODO:==========================
+// Отримати масив тільки неактивних користувачів (поле isActive).
+//TODO:==========================
+// Отримати масив користувачів віком від min до max
+//TODO:==========================
+// Отримати загальну суму балансу (поле balance) всіх користувачів.
+//TODO:==========================
+// Масив імен всіх користувачів, у яких є товарищь із зазначеним ім'ям.
+//TODO:==========================
+// Масив імен (поле name) людей, відсортованих залежно кількості їх друзів (поле friends)
+//TODO:==========================
+// Отримати масив всіх умінь всіх користувачів (поле skills), при цьому не повинно бути
+// Уміння, що повторюються, і вони повинні бути відсортовані в алфавітному порядку.
