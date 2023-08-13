@@ -156,3 +156,63 @@
 //   return min;
 // }
 // console.log(findSmallerNumber(0));
+
+//TODO:==========task-3=============
+// У нас є об'єкт, у якому зберігатимуться зарплати
+// нашої команди
+// Напишіть код для сумування всіх зарплат і
+// збережіть його результат у змінній sum.
+// Якщо об'єкт salaries порожній, то результат має бути 0
+
+// const salaries = {
+//   Mango: 100,
+//   Poly: 160,
+//   Ajax: 1470,
+// };
+
+// let sum = 0;
+// for (const salary of Object.values(salaries)) {
+//     sum += salary;
+// }
+  
+// console.log(sum);
+
+//TODO:============task-4================
+// Створіть функцію multiplyNumeric(obj),
+// яка множить всі числові властивості об'єкта obj на 2.
+
+// до виклику функції
+// let menu = {
+//   width: 200,
+//   height: 300,
+//   title: 'My menu',
+// };
+
+// function multiplyNumeric(obj) {
+//     for (const key in obj) {
+//         if (obj.hasOwnProperty(key)) {
+//             if (typeof obj[key] === "number") {
+//                 obj[key] *= 2;
+//             }
+            
+//         }
+//     }
+//     return obj;
+// }
+
+// console.log(multiplyNumeric(menu));
+
+//TODO:=================task-04=============================
+// Напиши функцію яка приймає масив чисел і повертає новий масив, унікальних чисел, які не повторюються.
+// Є 2 варіанти виконання.
+
+// const numbers = [1, 1, 1, 2, 3, 4, 7, 7, 6, 6, 5, 4, 23, 22, 22, 111, 1, 5];
+
+// function uniqArray(arr) {
+//     const uniq = {};
+//     for (const number of arr) {
+//         uniq[number] = number;
+//     }
+//     return Object.values(uniq);
+// }
+// console.log(uniqArray(numbers));
