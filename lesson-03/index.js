@@ -7,7 +7,6 @@
 //Рядок "Привіт <name>"
 //Реалізуй перевірку, що prompt не порожній
 
-
 // function letMeSeeYourName(callback) {
 // const name = prompt("enter your name")
 // if (!name) {
@@ -23,9 +22,8 @@
 //TODO:============task-02=========================
 // Напишіть функцію, яка приймає два числа і колбек-функцію. Функція повинна помножити числа між собою та передати результат дії до колбек-функції. Колбек-функція повинна, у разі, якщо, це число є парним - помножити це число на себе, якщо ні - взяти квадратний корінь з цього числа, та вивести результат у консоль лог.
 
-
 // function performOperation(a, b, callback) {
-// const result = a * b 
+// const result = a * b
 // return callback(result)
 // }
 // function callbackFn (number) {
@@ -38,11 +36,10 @@
 // console.log(performOperation(3, 7, callbackFn));
 
 // const performOperation = (a, b, callback) => callback(a * b)
-  
+
 //   const callbackFn = (number) => number % 2 === 0 ? Math.pow(number, 2) : Math.sqrt(number)
 
 //   console.log(performOperation(3, 7, callbackFn));
-
 
 //TODO:============task-03=========================
 //Напишіть функцію each(array, callback), яка
@@ -61,9 +58,7 @@
 // });
 // return newArray
 // }
-// console.log(each(numbers, (number)=> number * 2)); 
-
-
+// console.log(each(numbers, (number)=> number * 2));
 
 //TODO:============task-04=========================
 // Напишіть функцію, яка приймає масив чисел і колбек-функцію. Функція повинна повернути новий масив, у якому кожен елемент масиву перетворено згідно з логікою, яка визначається в колбек-функції. Колбек-функція приймає число, і повертає його ж, помножене на рандомне число від 1 до цього числа.
@@ -72,7 +67,7 @@
 // function transformArray(array, callback) {
 //   const newArray = []
 //   array.forEach(element => { newArray.push(callbackFn(element))
-    
+
 //   });
 //   return newArray
 // }
@@ -81,30 +76,60 @@
 // }
 // console.log(transformArray(numbers, callbackFn));
 
-
-
-
-
-
-
-
 // ! Object
 //TODO:=========task-01=================
 //  створіть об'єкт "Кошик", який буде мати список продуктів та методи для додавання і видалення продуктів. Також створіть об'єкт "Замовлення", який буде мати метод для отримання списку продуктів з кошика та оформлення замовлення. Зв'яжіть метод оформлення замовлення з методом "Оформити замовлення" об'єкта "Кошик" за допомогою bind.
 
-// cart.addProduct('Apple');
-// cart.addProduct('Orange');
-// cart.addProduct('Banana');
+// const cart = {
+//   products: [],
+//   addProduct(product) {
+//     this.products.push(product);
+//     console.log(`Product ${product} added to cart`);
+//     console.log(this.products);
+//   },
+//   removeProduct(product) {
+//     const index = this.products.indexOf(product);
+//     if (index === -1) {
+//       return alert(`Product with name ${product} not yet`);
+//     } else {
+//       this.products.splice(index, 1);
+//     }
+//     console.log(this.products);
+//   },
+//   checkOut() {
+//     console.log(`Ordering product: ${this.products.join(", ")}`);
+//   },
+// };
 
-//* order.placeOrder();
-//* Ordering products: Apple, Orange, Banana
-//* Placing order...
-//* Ordering products: Apple, Orange, Banana
-//* Order placed successfully!
+// const order = {
+//   checkOutCart: null,
 
-// console.log(cart.products);
-// cart.removeProduct('Orange');
-// console.log(cart.products);
+//   placeOrder() {
+//     console.log(this.checkOutCart);
+//     if (this.checkOutCart) {
+//       console.log("Placing order...");
+//       this.checkOutCart();
+//       console.log("Order placed successfully!");
+//     } else {
+//       console.log("No items in cart to order");
+//     }
+//   },
+// };
+// order.checkOutCart = cart.checkOut.bind(cart);
+
+// console.log(order.checkOutCart === cart.checkOut);
+
+// cart.addProduct("Apple");
+// cart.addProduct("Orange");
+// cart.addProduct("Banana");
+
+// order.placeOrder();
+// // *Ordering products: Apple, Orange, Banana
+// // * Placing order...
+// // * Ordering products: Apple, Orange, Banana
+// // * Order placed successfully!
+
+// cart.removeProduct("Orange");
 
 // order.placeOrder();
 //* Ordering products: Apple, Banana
@@ -112,32 +137,56 @@
 //* Ordering products: Apple, Banana
 //* Order placed successfully!
 
-
-
-
 // ! Prototype and Class
 //TODO:=========task-01=================
 /**
  * Напиши клас Notes який управляє колекцією нотаток у властивості items.
  * Нотатка - це об'єкт із властивостями text і priority.
- * Додай класу статичний метод Priopity, який буде повертати об'єкт із пріоритетами.
+ * Додай класу статичний метод Priority, який буде повертати об'єкт із пріоритетами.
  * Додай методи
  * - addNote(note),
  * - removeNote(text)
  * - updatePriority(text, newPriority)
  */
 
-const note1 = new Notes();
+// class Notes {
+//   static Priority() {
+//     return {
+//       LOW: "low",
+//       HIGHT: "hight",
+//     };
+//   }
+//   constructor() {
+//     this.items = [];
+//   }
+//   addNote(note) {
+//     this.items.push(note);
+//     console.log(this.items);
+//   }
+//   removeNote(noteName) {
+//     const index = this.items.findIndex(({ text }) => text === noteName);
+//     if (index !== -1) {
+//       this.items.splice(index, 1);
+//     }
+//     console.log(this.items);
+//   }
+//   updatePriority({ text, newPriority }) {
+//     const index = this.items.findIndex((item) => item.text === text);
+//     if (index !== -1) {
+//       this.items[index].priority = newPriority;
+//     }
+//   }
+// }
 
-note1.addNote({ text: 'Note1', priority: Notes.Priority().LOW });
-note1.addNote({ text: 'Note2', priority: Notes.Priority().LOW });
-console.table(note1.items);
+// const note1 = new Notes();
 
-note1.removeNote('Note1');
-console.table(note1.items);
+// note1.addNote({ text: "Note1", priority: Notes.Priority().LOW });
+// note1.addNote({ text: "Note2", priority: Notes.Priority().LOW });
 
-note1.updatePriority({ text: 'Note2', newPriority: Notes.Priority().HIGHT });
-console.table(note1.items);
+// note1.removeNote("Note1");
+
+// note1.updatePriority({ text: "Note2", newPriority: Notes.Priority().HIGHT });
+// console.table(note1.items);
 
 //! Практика наслідування у класах.
 //TODO:=========task-02=================
@@ -152,6 +201,22 @@ console.table(note1.items);
   | ##### Крім того, клас `Person` має мати метод `getDetails()`, який повертає об'єкт з ім'ям, віком, статтю та електронною поштою людини.
   |============================
 */
+// class Person {
+//   constructor({ userName, age, gender, email }) {
+//     this.name = userName;
+//     this.age = age;
+//     this.gender = gender;
+//     this.email = email;
+//   }
+//   getDetails() {
+//     return {
+//       userName: this.name,
+//       age: this.age,
+//       gender: this.gender,
+//       email: this.email,
+//     };
+//   }
+// }
 
 /**
   |=============Employee===============
@@ -161,36 +226,54 @@ console.table(note1.items);
   |  ##### Крім того, клас `Employee` має мати метод `getEmployeeDetails()`, який повертає об'єкт з ідентифікатором співробітника, зарплатою та відділом, в якому працює співробітник.
   |============================
 */
+// class Employee extends Person {
+//   constructor({ userName, age, gender, email, salary, department }) {
+//     super({ userName, age, gender, email });
+//     this.department = department;
+//     this.salary = salary;
+//   }
+//   getEmployeeDetails() {
+//     return {
+//       ...this.getDetails(),
+//       salary: this.salary,
+//       department: this.department,
+//     };
+//   }
+// }
 
-// const employee1 = {
-//   name: 'John Doe',
+// const John = {
+//   userName: "John Doe",
 //   age: 30,
-//   gender: 'Male',
-//   email: 'john.doe@example.com',
+//   gender: "Male",
+//   email: "john.doe@example.com",
 // };
 
-const person = new Person('John Doe', 30, 'Male', 'john.doe@example.com');
-console.log(person.getDetails());
+// const person = new Person("John Doe", 30, "Male", "john.doe@example.com");
+// const person = new Person(John);
+// console.log(person.getDetails());
 
-// const employee2 = {
-//   name: 'Jane Smith',
+// const Jane = {
+//   userName: "Jane Smith",
 //   age: 35,
-//   gender: 'Female',
-//   email: 'jane.smith@example.com',
+//   gender: "Female",
+//   email: "jane.smith@example.com",
 //   salary: 5000,
-//   department: 'HR',
+//   department: "HR",
 // };
 
-const employee = new Employee(
-  'Jane Smith',
-  35,
-  'Female',
-  'jane.smith@example.com',
-  5000,
-  'HR'
-);
+// const employee = new Employee(
+//   "Jane Smith",
+//   35,
+//   "Female",
+//   "jane.smith@example.com",
+//   5000,
+//   "HR"
+// );
+// const employee = new Employee(Jane);
+// console.log(employee.getEmployeeDetails());
 
-console.log(employee.getEmployeeDetails());
+// console.log(employee);
+// console.log(document);
 
 //TODO:=================task-03=============================
 // Завдання полягає у створенні програми, що дозволяє керувати замовленнями в ресторані.
@@ -210,21 +293,21 @@ console.log(employee.getEmployeeDetails());
 // #### Також потрібно створити клас `MenuItem`, який містить властивості `name` та `price` для предметів замовлення.
 
 // Create menu items
-const item1 = new MenuItem('Burger', 10);
-const item2 = new MenuItem('Fries', 5);
-const item3 = new MenuItem('Drink', 2);
+// const item1 = new MenuItem("Burger", 10);
+// const item2 = new MenuItem("Fries", 5);
+// const item3 = new MenuItem("Drink", 2);
 
-// Create an order
-const order = new Order(1);
+// // Create an order
+// const order = new Order(1);
 
-// Add items to the order
-order.addItem(item1);
-order.addItem(item2);
-order.addItem(item3);
+// // Add items to the order
+// order.addItem(item1);
+// order.addItem(item2);
+// order.addItem(item3);
 
-// Calculate the total and mark the order as paid
-const total = order.calculateTotal();
-order.markAsPaid();
+// // Calculate the total and mark the order as paid
+// const total = order.calculateTotal();
+// order.markAsPaid();
 
-console.log(`Order for table ${order.tableNumber} - Total: $${total}`);
-console.log(`Is paid: ${order.isPaid}`);
+// console.log(`Order for table ${order.tableNumber} - Total: $${total}`);
+// console.log(`Is paid: ${order.isPaid}`);
