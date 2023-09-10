@@ -107,15 +107,19 @@ const films = [
 //TODO:=========task-01=======Accordion==========
 /**
  * Викоритовуй шаблон акордеон меню з файлу[accordion.html](./accordion.html) та напиши наступний функціонал:
- * при кліку на елемент меню, розкривай блок з текстом.При повторному кліку по елементу,
+ * при кліку на елемент меню, розкривай блок з текстом. При повторному кліку по елементу,
  * розкритий текст приховується.Нажимаючи на інші елементи меню, попередньо відкриті елементи не закриваються.
  */
 
-// const listRef = document.querySelector('.js-accordion-list');
+// const listRef = document.querySelector(".js-accordion-list");
 
-// function handleBtnClick(event) {}
+// function handleBtnClick(event) {
+//   if (event.target.nodeName === "BUTTON") {
+//     event.target.nextElementSibling.classList.toggle("active");
+//   }
+// }
 
-// listRef.addEventListener('click', handleBtnClick);
+// listRef.addEventListener("click", handleBtnClick);
 
 //TODO:=========task-02=======Pagination==========
 /**
@@ -123,3 +127,37 @@ const films = [
  * Використовуй поширення подій.Додавай клас`active` на поточну сторінку. Створи допоміжну функцію`updateActivePage`, яка повинна обновляти активний клас.
  * Функція`handleClick`повинна викликатися коли відбувається клік на елементі`pagination`.
  */
+{
+}
+const paginatEl = document.querySelector(".js-pagination");
+paginatEl.addEventListener("click", updateActivePage);
+
+function updateActivePage(event) {
+  if (event.target.nodeName !== "LI") {
+    return;
+  }
+  const currentButton = event.target;
+  const activeButton = paginatEl.querySelector(".active");
+  console.log(currentButton);
+  console.log(activeButton);
+  if (currentButton.dataset.type === "page") {
+    currentButton.classList.add("active");
+    activeButton.classList.remove("active");
+  }
+  if (currentButton.dataset.type === "prev") {
+    const activePage = activeButton.dataset.page - 1;
+    const prevBtn = paginatEl.querySelector(`[data-page="${activePage}"]`);
+    if (prevBtn) {
+      activeButton.classList.remove("active");
+      prevBtn.classList.add("active");
+    }
+  }
+  if (currentButton.dataset.type === "next") {
+    const activePage = Number(activeButton.dataset.page) + 1;
+    const nextBtn = paginatEl.querySelector(`[data-page="${activePage}"]`);
+    if (nextBtn) {
+      activeButton.classList.remove("active");
+      nextBtn.classList.add("active");
+    }
+  }
+}
