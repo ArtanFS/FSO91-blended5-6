@@ -47,29 +47,29 @@
 
 const films = [
   {
-    title: "Tetris",
-    imgUrl: "https://static.hdrezka.ac/i/2023/3/20/f509264b419fdmu53x38j.jpg",
-    id: "film_1",
+    title: 'Tetris',
+    imgUrl: 'https://static.hdrezka.ac/i/2023/3/20/f509264b419fdmu53x38j.jpg',
+    id: 'film_1',
   },
   {
-    title: "Avatar: The Way of Water",
-    imgUrl: "https://static.hdrezka.ac/i/2022/12/22/tc5e6b8212683gn66r84s.jpg",
-    id: "film_2",
+    title: 'Avatar: The Way of Water',
+    imgUrl: 'https://static.hdrezka.ac/i/2022/12/22/tc5e6b8212683gn66r84s.jpg',
+    id: 'film_2',
   },
   {
-    title: "Operation Fortune: Ruse de guerre",
-    imgUrl: "https://static.hdrezka.ac/i/2022/2/11/s0d53f6cf0ae0tq29m85l.jpg",
-    id: "film_3",
+    title: 'Operation Fortune: Ruse de guerre',
+    imgUrl: 'https://static.hdrezka.ac/i/2022/2/11/s0d53f6cf0ae0tq29m85l.jpg',
+    id: 'film_3',
   },
   {
-    title: "Babylon",
-    imgUrl: "https://static.hdrezka.ac/i/2022/12/25/z330b47a82209ww99w55a.jpg",
-    id: "film_4",
+    title: 'Babylon',
+    imgUrl: 'https://static.hdrezka.ac/i/2022/12/25/z330b47a82209ww99w55a.jpg',
+    id: 'film_4',
   },
   {
-    title: "The Whale",
-    imgUrl: "https://static.hdrezka.ac/i/2023/2/24/h23d8c65d734akd89q94c.jpg",
-    id: "film_5",
+    title: 'The Whale',
+    imgUrl: 'https://static.hdrezka.ac/i/2023/2/24/h23d8c65d734akd89q94c.jpg',
+    id: 'film_5',
   },
 ];
 
@@ -127,37 +127,82 @@ const films = [
  * Використовуй поширення подій.Додавай клас`active` на поточну сторінку. Створи допоміжну функцію`updateActivePage`, яка повинна обновляти активний клас.
  * Функція`handleClick`повинна викликатися коли відбувається клік на елементі`pagination`.
  */
-{
-}
-const paginatEl = document.querySelector(".js-pagination");
-paginatEl.addEventListener("click", updateActivePage);
+// {
+// }
+// const paginatEl = document.querySelector(".js-pagination");
+// paginatEl.addEventListener("click", updateActivePage);
 
-function updateActivePage(event) {
-  if (event.target.nodeName !== "LI") {
-    return;
-  }
-  const currentButton = event.target;
-  const activeButton = paginatEl.querySelector(".active");
-  console.log(currentButton);
-  console.log(activeButton);
-  if (currentButton.dataset.type === "page") {
-    currentButton.classList.add("active");
-    activeButton.classList.remove("active");
-  }
-  if (currentButton.dataset.type === "prev") {
-    const activePage = activeButton.dataset.page - 1;
-    const prevBtn = paginatEl.querySelector(`[data-page="${activePage}"]`);
-    if (prevBtn) {
-      activeButton.classList.remove("active");
-      prevBtn.classList.add("active");
-    }
-  }
-  if (currentButton.dataset.type === "next") {
-    const activePage = Number(activeButton.dataset.page) + 1;
-    const nextBtn = paginatEl.querySelector(`[data-page="${activePage}"]`);
-    if (nextBtn) {
-      activeButton.classList.remove("active");
-      nextBtn.classList.add("active");
-    }
-  }
-}
+// function updateActivePage(event) {
+//   if (event.target.nodeName !== "LI") {
+//     return;
+//   }
+//   const currentButton = event.target;
+//   const activeButton = paginatEl.querySelector(".active");
+//   console.log(currentButton);
+//   console.log(activeButton);
+//   if (currentButton.dataset.type === "page") {
+//     currentButton.classList.add("active");
+//     activeButton.classList.remove("active");
+//   }
+//   if (currentButton.dataset.type === "prev") {
+//     const activePage = activeButton.dataset.page - 1;
+//     const prevBtn = paginatEl.querySelector(`[data-page="${activePage}"]`);
+//     if (prevBtn) {
+//       activeButton.classList.remove("active");
+//       prevBtn.classList.add("active");
+//     }
+//   }
+//   if (currentButton.dataset.type === "next") {
+//     const activePage = Number(activeButton.dataset.page) + 1;
+//     const nextBtn = paginatEl.querySelector(`[data-page="${activePage}"]`);
+//     if (nextBtn) {
+//       activeButton.classList.remove("active");
+//       nextBtn.classList.add("active");
+//     }
+//   }
+// }
+
+//TODO:=========task-03======Modal window===========
+/**
+  |============================
+  | Модальне вікно:
+  |  1 - Реалізувати відкриття модального вікна по кліку по кнопці "Відкрити модалку".
+  |  2 - Реалізувати закриття модального вікна по кліку на крестик і по "ESC". Не забувай знімати слухача події "keydown" після закриття модального вікна.
+  |  Виконуй завдвння послідовно: 
+  |  - Спочатку знайди елементи у Дом дереві, з якими тобі потрібно працювати. 
+  |  - Створи 3 функції onOpenModalBtnElClick, closeModalWindow, onEscClick. Не забувай робити перевірку на цільовий елемент. 
+  |  - Відображення модельного вікна реалізуй заа допомогою бібліотеки basicLightbox і його метода "basicLightbox.create".
+  |============================
+*/
+
+/**
+  |============Розмітка для модального вікна================
+  <div class="modal">
+  <button type="button" class="close-btn js-modal-close">
+    X
+  </button>
+
+  <form class="login-form js-modal__form">
+    <label>
+      Name
+      <input type="text" name="name" placeholder="enter your name" />
+    </label>
+    <label>
+      Email
+      <input type="email" name="email" placeholder="enter your email" />
+    </label>
+    <label>
+      Password
+      <input
+        type="password"
+        name="password"
+        placeholder="enter your password"
+      />
+    </label>
+    <button class="login-btn" type="submit">
+      Login
+    </button>
+  </form>
+</div>
+  |============================
+*/
