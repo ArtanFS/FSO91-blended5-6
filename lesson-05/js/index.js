@@ -12,12 +12,32 @@
 // 2. Theme switcher
 // Використовуй html з файлу themeSwitch.html
 // Використовуй local storage для зберігання вибраної теми (dark / light)
-// const themeSwitcher = document.getElementById('theme-switch');
+const themeSwitcher = document.getElementById("theme-switch");
+const body = document.body;
+const LS_K = "Theme";
+themeSwitcher.addEventListener("click", onCheckBoxChange);
+document.addEventListener("DOMContentLoaded", setThemeOnLoad);
 
 // light theme is default, that's why themeSwitcher is unchecked
-// themeSwitcher.checked = false;
+themeSwitcher.checked = false;
+
+function changeLightTheme() {
+  body.classList.replace("dark", "light");
+  localStorage.setItem(LS_K, "light");
+}
+
+function changeDarkTheme() {
+  body.classList.replace("light", "dark");
+  localStorage.setItem(LS_K, "dark");
+}
 
 function onCheckBoxChange() {
+  if (themeSwitcher.checked) {
+    changeDarkTheme();
+  } else {
+    changeLightTheme();
+  }
+
   // if you change theme to dark, add 'dark' class and remove previus, add this change to local storage
   // if you select light theme do the same work but add 'light' class
 }
@@ -26,6 +46,13 @@ function setThemeOnLoad() {
   // this helpful function should call every time when you update page, to check what theme was seted to local storage
   // you should get data from LS and set saved theme to body
   // don't forget about themeSwitcher, if current theme is dark, it should be checked
+  const lsData = localStorage.getItem(LS_K);
+  if (lsData === "dark") {
+    body.classList.replace("light", "dark");
+    themeSwitcher.checked = true;
+  } else {
+    body.classList.replace("dark", "light");
+  }
 }
 
 // Модуль 9. Заняття 17. Timers and date. Asynchrony
@@ -75,7 +102,7 @@ function setThemeOnLoad() {
  */
 
 function greet() {
-  return 'hello world';
+  return "hello world";
 }
 
 //TODO:====================02==========================
