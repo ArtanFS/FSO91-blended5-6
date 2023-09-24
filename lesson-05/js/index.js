@@ -58,10 +58,72 @@ function setThemeOnLoad() {
 // Модуль 9. Заняття 17. Timers and date. Asynchrony
 // 1. Напиши скрипт для віджета календаря. В кінцевому результаті повинна відображатися сьогоднішня дата у календарику. Використовуй new Date() для отримання поточного року, місяця, дня тижня та самого дня. Задай відповідні дані у відповідні елементи на html сторінці.
 // Викоритовуй шаблон календаря з файлу index.html.
-// const monthNameEl = document.querySelector('.js-month');
-// const dayNameEl = document.querySelector('.js-day');
-// const dayNumEl = document.querySelector('.js-day-number');
-// const yearEl = document.querySelector('.js-year');
+const monthNameEl = document.querySelector('.js-month');
+const dayNameEl= document.querySelector('.js-day');
+const dayNumEl = document.querySelector('.js-day-number');
+const yearEl = document.querySelector('.js-year');
+
+const date = new Date()
+monthNameEl.textContent=date.toLocaleDateString('uk-UA', { month: 'long' });
+dayNameEl.textContent=date.toLocaleDateString('uk-UA', { weekday: 'long' });
+dayNumEl.textContent=date.toLocaleDateString('uk-UA', { day: 'numeric' });
+yearEl.textContent=date.toLocaleDateString('uk-UA', { year: 'numeric' });
+
+
+// clock
+const timeZone= -date.getTimezoneOffset() / 60;
+
+(function createClock(rootSelector) {
+  const markup=`
+  <div class="clock__container">
+             <div class="clock__items js-clock-items">
+               <div class="clock__item js-clock__hours">00</div>
+               <div class="clock__item js-clock__minutes">00</div>
+               <div class="clock__item js-clock__seconds">00</div>
+             </div>
+           </div>
+ `;
+
+ rootSelector.insertAdjacentHTML('afterend', markup);
+ const clockEl=document.querySelector(".js-clock-items");
+startClock(clockEl);
+})(dayNameEl)
+
+function startClock(rootSelector){
+  setInterval(() => {
+    const currentTime=Date.now();
+    const{hours, minutes, seconds}=convertMs(currentTime);
+    rootSelector.querySelector(".js-clock__hours").textContent=addPad(hours+timeZone);
+    rootSelector.querySelector(".js-clock__minutes").textContent=addPad(minutes);
+    rootSelector.querySelector(".js-clock__seconds").textContent=addPad(seconds);
+  }, 1000);
+ 
+}
+
+function convertMs(ms) {
+  // Number of milliseconds per unit of time
+  const second = 1000;
+  const minute = second * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
+
+  // Remaining days
+  const days = Math.floor(ms / day);
+  // Remaining hours
+  const hours = Math.floor((ms % day) / hour);
+  // Remaining minutes
+  const minutes = Math.floor(((ms % day) % hour) / minute);
+  // Remaining seconds
+  const seconds = Math.floor((((ms % day) % hour) % minute) / second);
+
+  return { days, hours, minutes, seconds };
+}
+function addPad(value) {
+  return String(value).padStart(2, 0);
+}
+
+
+
 
 // 2. Потрібно створити калькулятор віку. Є контейнер з заголовком "калькулятором віку" і input з введенням дати. Якщо ми натиснемо на input дати, ми зможемо вибрати дату нашого дня народження. Наприклад, якщо ми виберемо дату 17.06.1998 року і натиснемо на "Розрахувати вік", побачимо, що вік розраховується на основі цієї дати і нам у результаті покажеться, що Your age is 25 years old; Якщо нічого не введено, то виводь alert("Please enter your birthday")Використовуй доповіжні функції для роботи.
 // Викоритовуй шаблон форми з файлу ageCalculator.html.
