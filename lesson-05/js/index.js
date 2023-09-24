@@ -58,23 +58,22 @@ function setThemeOnLoad() {
 // Модуль 9. Заняття 17. Timers and date. Asynchrony
 // 1. Напиши скрипт для віджета календаря. В кінцевому результаті повинна відображатися сьогоднішня дата у календарику. Використовуй new Date() для отримання поточного року, місяця, дня тижня та самого дня. Задай відповідні дані у відповідні елементи на html сторінці.
 // Викоритовуй шаблон календаря з файлу index.html.
-const monthNameEl = document.querySelector('.js-month');
-const dayNameEl= document.querySelector('.js-day');
-const dayNumEl = document.querySelector('.js-day-number');
-const yearEl = document.querySelector('.js-year');
+const monthNameEl = document.querySelector(".js-month");
+const dayNameEl = document.querySelector(".js-day");
+const dayNumEl = document.querySelector(".js-day-number");
+const yearEl = document.querySelector(".js-year");
 
-const date = new Date()
-monthNameEl.textContent=date.toLocaleDateString('uk-UA', { month: 'long' });
-dayNameEl.textContent=date.toLocaleDateString('uk-UA', { weekday: 'long' });
-dayNumEl.textContent=date.toLocaleDateString('uk-UA', { day: 'numeric' });
-yearEl.textContent=date.toLocaleDateString('uk-UA', { year: 'numeric' });
-
+const date = new Date();
+monthNameEl.textContent = date.toLocaleDateString("uk-UA", { month: "long" });
+dayNameEl.textContent = date.toLocaleDateString("uk-UA", { weekday: "long" });
+dayNumEl.textContent = date.toLocaleDateString("uk-UA", { day: "numeric" });
+yearEl.textContent = date.toLocaleDateString("uk-UA", { year: "numeric" });
 
 // clock
-const timeZone= -date.getTimezoneOffset() / 60;
+const timeZone = -date.getTimezoneOffset() / 60;
 
 (function createClock(rootSelector) {
-  const markup=`
+  const markup = `
   <div class="clock__container">
              <div class="clock__items js-clock-items">
                <div class="clock__item js-clock__hours">00</div>
@@ -84,20 +83,23 @@ const timeZone= -date.getTimezoneOffset() / 60;
            </div>
  `;
 
- rootSelector.insertAdjacentHTML('afterend', markup);
- const clockEl=document.querySelector(".js-clock-items");
-startClock(clockEl);
-})(dayNameEl)
+  rootSelector.insertAdjacentHTML("afterend", markup);
+  const clockEl = document.querySelector(".js-clock-items");
+  startClock(clockEl);
+})(dayNameEl);
 
-function startClock(rootSelector){
+function startClock(rootSelector) {
   setInterval(() => {
-    const currentTime=Date.now();
-    const{hours, minutes, seconds}=convertMs(currentTime);
-    rootSelector.querySelector(".js-clock__hours").textContent=addPad(hours+timeZone);
-    rootSelector.querySelector(".js-clock__minutes").textContent=addPad(minutes);
-    rootSelector.querySelector(".js-clock__seconds").textContent=addPad(seconds);
+    const currentTime = Date.now();
+    const { hours, minutes, seconds } = convertMs(currentTime);
+    rootSelector.querySelector(".js-clock__hours").textContent = addPad(
+      hours + timeZone
+    );
+    rootSelector.querySelector(".js-clock__minutes").textContent =
+      addPad(minutes);
+    rootSelector.querySelector(".js-clock__seconds").textContent =
+      addPad(seconds);
   }, 1000);
- 
 }
 
 function convertMs(ms) {
@@ -122,20 +124,32 @@ function addPad(value) {
   return String(value).padStart(2, 0);
 }
 
-
-
-
 // 2. Потрібно створити калькулятор віку. Є контейнер з заголовком "калькулятором віку" і input з введенням дати. Якщо ми натиснемо на input дати, ми зможемо вибрати дату нашого дня народження. Наприклад, якщо ми виберемо дату 17.06.1998 року і натиснемо на "Розрахувати вік", побачимо, що вік розраховується на основі цієї дати і нам у результаті покажеться, що Your age is 25 years old; Якщо нічого не введено, то виводь alert("Please enter your birthday")Використовуй доповіжні функції для роботи.
 // Викоритовуй шаблон форми з файлу ageCalculator.html.
-// const btnEl = document.querySelector('.js-form-btn');
-// const inputEl = document.querySelector('.js-input');
-// const resultEl = document.querySelector('.js-form-result');
 
-// function calculateAge() {}
+const btnEl = document.querySelector(".js-form-btn");
+const inputEl = document.querySelector(".js-input");
+const resultEl = document.querySelector(".js-form-result");
 
-// function getAge(birthdayValue) {}
+function calculateAge() {
+  const birthdayDate = new Date(inputEl.value);
+  const currentDate = new Date();
 
-// btnEl.addEventListener('click', calculateAge);
+  if (birthdayDate > currentDate) {
+    return alert("Please enter your birthday");
+  }
+
+  const diffDate = currentDate - birthdayDate;
+  const result = getAge(diffDate);
+  console.log(result);
+  resultEl.textContent = `Your age is ${result} years old!`;
+}
+
+function getAge(diffMs) {
+  return Math.floor(diffMs / (1000 * 60 * 60 * 24 * 365.25));
+}
+
+btnEl.addEventListener("click", calculateAge);
 
 // 3. Напишіть changeBackground() встановлює фонове зображення на body. Викоритовуй масив картинок, які повинні кожні 5 секунд змінюватися, тобто через кожні 5 секунд має викликатися функція changeBackground. Якщо ми дійшли до кінця масива, то починай спочатку. Для цього створи лічильник, аби слідкувати, яка картинка зараз показується.
 // Стиль для body для плавного переходу
@@ -219,7 +233,29 @@ const getLastData = () =>
  * logCount повинна логувати кількість викликів
  */
 
-// countWithDelay(3000, 5, 1000);
+function createPromise(delay, callback) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, delay);
+  }).then(() => {
+    callback();
+  });
+}
+
+function countWithDelay(delay, time, interval) {
+  let counter = 0;
+  function logCounter() {
+    counter += 1;
+    if (counter === time) return;
+    setTimeout(logCounter, interval);
+
+    console.log(counter);
+  }
+  createPromise(delay, logCounter);
+}
+
+countWithDelay(3000, 8, 1000);
 
 //TODO:====================04==========================
 /**
