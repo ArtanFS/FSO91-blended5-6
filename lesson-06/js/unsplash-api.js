@@ -3,7 +3,7 @@ export class UnsplashAPI {
   #API_KEY = "LxvKVGJqiSe6NcEVZOaLXC-f2JIIWZaq_o0WrF8mwJc";
 
   constructor(perPage) {
-    this.query = "cat";
+    this.query = null;
     this.page = 1;
     this.per_page = perPage;
   }
