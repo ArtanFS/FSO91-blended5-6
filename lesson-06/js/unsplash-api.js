@@ -17,6 +17,5 @@ export class UnsplashAPI {
         client_id: this.#API_KEY,
       },
     });
-    //   .then((res) => res.data);
   }
 }
